@@ -1,5 +1,8 @@
 <template>
-    <div class="cell" v-on:click="FlipIsAlive" />
+    <div 
+        class="cell" 
+        v-on:mouseover="FlipIsAlive"
+    />
 </template>
 
 <script>
@@ -31,7 +34,7 @@ export default {
         width: 20px;
         height: 20px;
         background-color: #3c4951;
-        margin: 4px;
+        margin: 1px;
         display: inline-block;
     }
 </style>
