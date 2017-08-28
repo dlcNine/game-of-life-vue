@@ -1,5 +1,5 @@
 <template>
-    <div v-on:click="FlipIsAlive" />
+    <div class="cell" v-on:click="FlipIsAlive" />
 </template>
 
 <script>
@@ -27,11 +27,11 @@ export default {
 </script>
 
 <style>
-    div {
+    div.cell {
         width: 20px;
         height: 20px;
         background-color: #3c4951;
-        /*background-color: #80c8ed;*/
         margin: 4px;
+        display: inline-block;
     }
 </style>
