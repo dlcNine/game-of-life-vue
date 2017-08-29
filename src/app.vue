@@ -8,7 +8,7 @@
         <form>
             <input 
                 type="number" 
-                v-model.number="numRows" 
+                v-model.number="numRows"
                 placeholder="rows"
                 min="1"
                 max="25"
@@ -24,6 +24,8 @@
             <button>Pause</button>
 
         </form>
+        <p>app-rows: {{numRows}}</p>
+        <p>app-columns: {{numColumns}}</p>
 
     </div>
 </template>
@@ -38,10 +40,6 @@ export default {
             numRows: 1,
             numColumns: 1
         };
-    },
-    updated: function() {
-        console.log("rows:" + this.$data.numRows);
-        console.log("columns:" + this.$data.numColumns);
     },
     methods: {
 
