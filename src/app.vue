@@ -2,7 +2,7 @@
     <div>
         <h1>Game of Life</h1>
         <grid 
-            v-bind:rows="numRows" 
+            v-bind:rows="numRows"
             v-bind:columns="numColumns"
         />
         <form>
@@ -24,9 +24,6 @@
             <button>Pause</button>
 
         </form>
-        <p>app-rows: {{numRows}}</p>
-        <p>app-columns: {{numColumns}}</p>
-
     </div>
 </template>
 

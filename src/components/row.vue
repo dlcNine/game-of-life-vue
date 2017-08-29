@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <cell 
-            v-for="(cell, index) in numCells"
+            v-for="(cell, index) in columns"
             v-bind:key="index"
             v-bind:index="index"
         />
@@ -13,9 +13,9 @@ import Cell from "./cell.vue";
 
 export default {
     components: { Cell },
+    props: ["columns"],
     data: function() {
         return {
-            numCells: 25
         };
     },
     methods: {

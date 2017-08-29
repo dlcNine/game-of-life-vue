@@ -1,12 +1,11 @@
 <template>
     <div class="grid">
         <row 
-            v-for="(rows, index) in this.rows"
+            v-for="(row, index) in rows"
             v-bind:key="index"
             v-bind:index="index"
+            v-bind:columns="columns"
         />
-        <p>grid-props-rows: {{rows}}</p>
-        <p>grid-props-columns: {{columns}}</p>
     </div>
 </template>
 
