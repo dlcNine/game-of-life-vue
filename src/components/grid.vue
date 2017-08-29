@@ -28,13 +28,26 @@ export default {
             let numAliveNeighbors = 0;
 
             for (let rowAdjust = -1; rowAdjust < 2; rowAdjust++) {
-                
+                for (let columnAdjust = -1; columnAdjust < 2;columnAdjust++) {
+                    
+                    let neighborCoords = [
+                        cellRow + rowAdjust,
+                        cellColumn + columnAdjust
+                    ];
+
+                    if (neighborCoords[0] === cellRow && neighborCoords[1] === cellColumn) {
+                        continue;
+                    }
+                    else {
+                        
+                        let currentRow = this.GetArrayOfRows()[neighborCoords[0]];
+
+                        let currentCell = currentRow.GetArrayOfCells()[neighborCoords[1]];
+
+                    }
+                        
+                }
             }
-            // check row above
-
-            // check current row
-
-            // check row below
 
         }
     },

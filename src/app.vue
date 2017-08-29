@@ -22,6 +22,7 @@
              />
             <button v-on:click.prevent="DisplayCurrentGrid">Display Current Grid</button>
             <!-- <button>Pause</button> -->
+            <button v-on:click.prevent="TestNumAliveNeighbors">Test Num Alive Neighbors</button>
 
         </form>
     </div>
@@ -57,6 +58,9 @@ export default {
         },
         ComputeNextGrid: function() {
 
+        },
+        TestNumAliveNeighbors: function() {
+            this.$children[0].GetNumAliveNeighbors(1, 1);
         }
     },
     computed: {
@@ -67,3 +71,10 @@ export default {
 <style>
 
 </style>
+
+
+
+
+
+
+
