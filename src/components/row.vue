@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <cell 
-            v-for="(cell, index) in numCells" 
+            v-for="(cell, index) in numCells"
             v-bind:key="index"
             v-bind:index="index"
         />

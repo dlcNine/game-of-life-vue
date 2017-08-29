@@ -17,11 +17,11 @@ export default {
             this.isAlive = !this.isAlive;
 
             if (this.isAlive) {
-                console.log("flipped to life!");
+                // console.log("flipped to life!");
                 this.$el.style.backgroundColor = "#22d822";
             }
             else {
-                console.log("flipped to death");
+                // console.log("flipped to death");
                 this.$el.style.backgroundColor = "#3c4951";
             }
         }
