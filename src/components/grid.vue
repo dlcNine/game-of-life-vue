@@ -6,6 +6,7 @@
             v-bind:index="index"
             v-bind:columns="columns"
         />
+        <button v-on:click.prevent="GetArrayOfRows">Get Array of rows</button>
     </div>
 </template>
 
@@ -20,6 +21,9 @@ export default {
         };
     },
     methods: {
+        GetArrayOfRows: function() {
+            console.log(this.$children);
+        }
 
     },
     computed: {

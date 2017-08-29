@@ -34,13 +34,16 @@ export default {
     components: { Grid },
     data: function() {
         return {
-            numRows: 1,
-            numColumns: 1
+            numRows: 10,
+            numColumns: 10
         };
     },
     methods: {
 
     },
+    computed: {
+        
+    }
 };
 </script>
 
