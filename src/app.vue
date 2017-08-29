@@ -41,24 +41,37 @@ export default {
         };
     },
     methods: {
-        DisplayCurrentGrid: function() {
-            let gridComponent = this.$children[0];
-            let arrayOfRows = gridComponent.GetArrayOfRows();
+        BuildNextGrid: function() {
+            let arrayOfRows = this.$children[0].GetArrayOfRows();
 
-            for (let row = 0; row < arrayOfRows.length; row++) {
-                let arrayOfCells = arrayOfRows[row].GetArrayOfCells();
-
-                // let cellValues = [];
-                for (let col = 0; col < arrayOfCells.length; col++) {
-                    // cellValues.push(arrayOfCells[col].isAlive);
-                    arrayOfCells[col].FlipIsAlive();
-                }
-                // console.log(cellValues);
-            }
+            // iterate through each row
+            
+                // create an newRow array
+                // iterate through each cell
+                    // check num AliveNeighbors
+                    // determine if live or die
+                    // push live or die into newRow array
+                // push new Row array into nextGrid
         },
-        ComputeNextGrid: function() {
+        // DetermineLiveOrDie: function(currentCell, numAliveNeighbors) {
+        //     if (currentCell.isAlive) {
+        //         if (numAliveNeighbors < 2 || numAliveNeighbors > 3) {
+        //             // cell dies
+        //             console.log("cell will die");
+        //         }
+        //         else if (numAliveNeighbors > 1 && numAliveNeighbors < 4) {
+        //             // cell continues living
+        //             console.log("cell continues living");
+        //         }
+        //     }
+        //     else {
+        //         if (numAliveNeighbors === 3) {
+        //             // cell comes back to life
+        //             console.log("cell comes back to life");
+        //         }
 
-        },
+        //     }
+        // },
         TestNumAliveNeighbors: function() {
             console.log(this.$children[0].GetNumAliveNeighbors(2, 1));
         }

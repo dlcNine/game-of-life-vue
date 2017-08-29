@@ -56,9 +56,7 @@ export default {
 
                         if (currentCell.isAlive)
                             numAliveNeighbors++;
-
                     }
-                        
                 }
             }
             return numAliveNeighbors;
