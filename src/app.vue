@@ -42,9 +42,10 @@ export default {
     },
     methods: {
         BuildNextGrid: function() {
+            this.nextGrid = [];
+
             let arrayOfRows = this.$children[0].GetArrayOfRows();
 
-            // iterate through each row
             for (let row = 0; row < arrayOfRows.length; row++) {
                 let newRow = [];
                 let arrayOfCells = arrayOfRows[row].GetArrayOfCells();
@@ -53,37 +54,38 @@ export default {
                     let currentCell = arrayOfCells[column];
                     let numAliveNeighbors = this.$children[0].GetNumAliveNeighbors(row, column);
 
-                    // console.log(currentCell.isAlive);
-                    // console.log(numAliveNeighbors);
 
                     let isGoingToLive = this.DetermineLiveOrDie(currentCell, numAliveNeighbors);
 
-                    console.log("isGoingToLive : " + isGoingToLive);
-
-                    // console.log(isGoingToLive);
-                    // newRow.push(isGoingToLive);
+                    newRow.push(isGoingToLive);
                 }
-                // console.log(newRow);
-                // this.nextGrid.push(newRow);
+                this.nextGrid.push(newRow);
             }
-            // console.log(this.nextGrid);
+            console.log(this.nextGrid);
+        },
+        DrawNextGrid: function() {
+            this.BuildNextGrid();
+
+            // iterate over currentGrid and compare
+                // if current Alive
+                    // next alive
+                    // next dead
+                // if current Dead
+                    // next alive
+                    //
         },
         DetermineLiveOrDie: function(currentCell, numAliveNeighbors) {
             if (currentCell.isAlive) {
-                if (numAliveNeighbors < 2 || numAliveNeighbors > 3) {
+                if (numAliveNeighbors < 2 || numAliveNeighbors > 3)
                     return false;
-                }
-                else if (numAliveNeighbors > 1 && numAliveNeighbors < 4) {
+                else if (numAliveNeighbors > 1 && numAliveNeighbors < 4)
                     return true;
-                }
             }
             else {
-                if (numAliveNeighbors === 3) {
-                    return true; 
-                }
-                else {
+                if (numAliveNeighbors === 3)
+                    return true;
+                else
                     return false;
-                }
 
             }
         },
