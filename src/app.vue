@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="app">
         <h1>Game of Life</h1>
         <grid 
             v-bind:rows="numRows"
@@ -33,14 +33,13 @@ export default {
     data: function() {
         return {
             numRows: 25,
-            numColumns: 50,
+            numColumns: 25,
             nextGrid: [],
             intervalID: ""
         };
     },
     methods: {
         StartGame: function() {
-            // console.log("Starting game");
             this.intervalID = setInterval(this.DrawNextGrid, 200);
         },
         PauseGame: function() {
