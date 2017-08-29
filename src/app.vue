@@ -11,17 +11,15 @@
                 v-model.number="numRows"
                 placeholder="rows"
                 min="1"
-                max="25"
             />
             <input 
                 type="number" 
                 v-model.number="numColumns" 
                 placeholder="columns"
                 min="1"
-                max="25"
              />
-            <button v-on:click.prevent="DrawNextGrid">Draw Next Grid</button>
-            <!-- <button>Pause</button> -->
+            <button v-on:click.prevent="StartGame">StartGame</button>
+            <button v-on:click.prevent="PauseGame">Pause</button>
 
         </form>
     </div>
@@ -34,12 +32,20 @@ export default {
     components: { Grid },
     data: function() {
         return {
-            numRows: 10,
-            numColumns: 10,
-            nextGrid: []
+            numRows: 25,
+            numColumns: 50,
+            nextGrid: [],
+            intervalID: ""
         };
     },
     methods: {
+        StartGame: function() {
+            // console.log("Starting game");
+            this.intervalID = setInterval(this.DrawNextGrid, 200);
+        },
+        PauseGame: function() {
+            clearInterval(this.intervalID);
+        },
         BuildNextGrid: function() {
             this.nextGrid = [];
 
@@ -93,9 +99,6 @@ export default {
                     return false;
 
             }
-        },
-        TestNumAliveNeighbors: function() {
-            console.log(this.$children[0].GetNumAliveNeighbors(2, 1));
         }
     },
     computed: {
