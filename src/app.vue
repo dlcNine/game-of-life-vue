@@ -20,9 +20,8 @@
                 min="1"
                 max="25"
              />
-            <button v-on:click.prevent="BuildNextGrid">Build Next Grid</button>
+            <button v-on:click.prevent="DrawNextGrid">Draw Next Grid</button>
             <!-- <button>Pause</button> -->
-            <button v-on:click.prevent="TestNumAliveNeighbors">Test Num Alive Neighbors</button>
 
         </form>
     </div>
@@ -35,8 +34,8 @@ export default {
     components: { Grid },
     data: function() {
         return {
-            numRows: 3,
-            numColumns: 3,
+            numRows: 10,
+            numColumns: 10,
             nextGrid: []
         };
     },
@@ -61,18 +60,24 @@ export default {
                 }
                 this.nextGrid.push(newRow);
             }
-            console.log(this.nextGrid);
         },
         DrawNextGrid: function() {
             this.BuildNextGrid();
 
-            // iterate over currentGrid and compare
-                // if current Alive
-                    // next alive
-                    // next dead
-                // if current Dead
-                    // next alive
-                    //
+            let arrayOfRows = this.$children[0].GetArrayOfRows();
+
+            for (let row = 0; row < arrayOfRows.length; row++) {
+                let arrayOfCells = arrayOfRows[row].GetArrayOfCells();
+
+                for (let column = 0; column < arrayOfCells.length; column++) {
+                    let currentCell = arrayOfCells[column];
+
+                    if (currentCell.isAlive && this.nextGrid[row][ column] === false)
+                        currentCell.FlipIsAlive();
+                    else if (!currentCell.isAlive && this.nextGrid[row][column] === true)
+                        currentCell.FlipIsAlive();
+                }
+            }
         },
         DetermineLiveOrDie: function(currentCell, numAliveNeighbors) {
             if (currentCell.isAlive) {

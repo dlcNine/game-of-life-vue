@@ -1,7 +1,7 @@
 <template>
     <div 
         class="cell" 
-        v-on:click="FlipIsAlive"
+        v-on:mouseover="FlipIsAlive"
     />
 </template>
 
