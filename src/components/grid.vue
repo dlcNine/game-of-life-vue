@@ -42,13 +42,26 @@ export default {
                         
                         let currentRow = this.GetArrayOfRows()[neighborCoords[0]];
 
+                        // TODO: enable wrap around behavior here
+                        if (currentRow === undefined) {
+                            continue;
+                        }
+
                         let currentCell = currentRow.GetArrayOfCells()[neighborCoords[1]];
+
+                        // TODO: enable wrap around behaior here
+                        if (currentCell === undefined) {
+                            continue;
+                        }
+
+                        if (currentCell.isAlive)
+                            numAliveNeighbors++;
 
                     }
                         
                 }
             }
-
+            return numAliveNeighbors;
         }
     },
     computed: {

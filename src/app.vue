@@ -60,7 +60,7 @@ export default {
 
         },
         TestNumAliveNeighbors: function() {
-            this.$children[0].GetNumAliveNeighbors(1, 1);
+            console.log(this.$children[0].GetNumAliveNeighbors(2, 1));
         }
     },
     computed: {
