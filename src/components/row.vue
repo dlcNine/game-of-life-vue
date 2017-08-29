@@ -5,8 +5,6 @@
             v-bind:key="index"
             v-bind:index="index"
         />
-        <button v-on:click.prevent="FlipFirstChild">Flip first child</button>
-        <button v-on:click.prevent="GetArrayOfCells">Get Array of Cells</button>
     </div>
 </template>
 
@@ -24,10 +22,6 @@ export default {
         GetArrayOfCells: function() {
             // console.log(this.$children);
             return this.$children;
-        },
-
-        FlipFirstChild: function() {
-            this.$children[0].FlipIsAlive();
         }
     }
 };

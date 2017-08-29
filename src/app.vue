@@ -20,8 +20,8 @@
                 min="1"
                 max="25"
              />
-            <button>Start</button>
-            <button>Pause</button>
+            <button v-on:click.prevent="DisplayCurrentGrid">Display Current Grid</button>
+            <!-- <button>Pause</button> -->
 
         </form>
     </div>
@@ -34,15 +34,32 @@ export default {
     components: { Grid },
     data: function() {
         return {
-            numRows: 10,
-            numColumns: 10
+            numRows: 3,
+            numColumns: 3,
+            nextGrid: []
         };
     },
     methods: {
+        DisplayCurrentGrid: function() {
+            let gridComponent = this.$children[0];
+            let arrayOfRows = gridComponent.GetArrayOfRows();
 
+            for (let row = 0; row < arrayOfRows.length; row++) {
+                let arrayOfCells = arrayOfRows[row].GetArrayOfCells();
+
+                // let cellValues = [];
+                for (let col = 0; col < arrayOfCells.length; col++) {
+                    // cellValues.push(arrayOfCells[col].isAlive);
+                    arrayOfCells[col].FlipIsAlive();
+                }
+                // console.log(cellValues);
+            }
+        },
+        ComputeNextGrid: function() {
+
+        }
     },
     computed: {
-        
     }
 };
 </script>

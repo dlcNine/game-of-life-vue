@@ -6,7 +6,6 @@
             v-bind:index="index"
             v-bind:columns="columns"
         />
-        <button v-on:click.prevent="GetArrayOfRows">Get Array of rows</button>
     </div>
 </template>
 
@@ -22,9 +21,22 @@ export default {
     },
     methods: {
         GetArrayOfRows: function() {
-            console.log(this.$children);
-        }
+            // console.log(this.$children);
+            return this.$children;
+        },
+        GetNumAliveNeighbors(cellRow, cellColumn){
+            let numAliveNeighbors = 0;
 
+            for (let rowAdjust = -1; rowAdjust < 2; rowAdjust++) {
+                
+            }
+            // check row above
+
+            // check current row
+
+            // check row below
+
+        }
     },
     computed: {
 
