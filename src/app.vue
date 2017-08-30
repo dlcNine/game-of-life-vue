@@ -1,6 +1,8 @@
 <template>
     <div class="app">
         <h1>Game of Life</h1>
+        <h2 v-if="hasGameStarted">Game Status: Running</h2>
+        <h2 v-else>Game Status: Paused</h2>
         <grid 
             v-bind:rows="numRows | ValidateInput"
             v-bind:columns="numColumns | ValidateInput"
@@ -21,14 +23,14 @@
                 Number of Columns
                 <input 
                     type="number" 
-                    v-model.number="numColumns" 
+                    v-model.number="numColumns"
                     placeholder="columns"
                     min="1"
                  />
             </label>
             <br />
             <label for="x-wrap">
-                X-Wrapping {{xWrappingOn}}
+                X-Wrapping
                 <input
                     id="x-wrap"
                     type="checkbox" 
@@ -36,7 +38,7 @@
                 />
             </label>
             <label for="y-wrap">
-                Y-Wrapping {{yWrappingOn}}
+                Y-Wrapping
                 <input 
                     id="y-wrap" 
                     type="checkbox"  
