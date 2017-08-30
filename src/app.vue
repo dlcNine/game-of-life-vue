@@ -35,15 +35,27 @@ export default {
             numRows: 25,
             numColumns: 25,
             nextGrid: [],
-            intervalID: ""
+            intervalID: "",
+            hasGameStarted: false
         };
     },
     methods: {
         StartGame: function() {
-            this.intervalID = setInterval(this.DrawNextGrid, 200);
+            if (!this.hasGameStarted) {
+                this.intervalID = setInterval(this.DrawNextGrid, 200);
+                this.hasGameStarted = true;
+            }
+            else 
+                console.log("game already in progress");
         },
         PauseGame: function() {
-            clearInterval(this.intervalID);
+            if (this.hasGameStarted) {
+                clearInterval(this.intervalID);
+                this.hasGameStarted = false;
+            }
+            else 
+                console.log("game hasn't started yet");
+            
         },
         BuildNextGrid: function() {
             this.nextGrid = [];
