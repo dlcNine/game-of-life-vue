@@ -1,14 +1,6 @@
 <template>
     <div class="app">
         <h1>Game of Life</h1>
-        <h2 v-if="hasGameStarted">Game Status: Running</h2>
-        <h2 v-else>Game Status: Paused</h2>
-        <grid 
-            v-bind:rows="numRows | ValidateInput"
-            v-bind:columns="numColumns | ValidateInput"
-            v-bind:yWrappingOn="yWrappingOn"
-            v-bind:xWrappingOn="xWrappingOn"
-        />
         <form>
             <label>
                 Number of Rows
@@ -49,6 +41,16 @@
             <button v-on:click.prevent="PauseGame">Pause</button>
             <button v-on:click.prevent="WipeGrid">Wipe Grid</button>
         </form>
+        <h2>{{helpMessage}}</h2>
+        <grid 
+            v-bind:rows="numRows | ValidateInput"
+            v-bind:columns="numColumns | ValidateInput"
+            v-bind:yWrappingOn="yWrappingOn"
+            v-bind:xWrappingOn="xWrappingOn"
+        />
+        <footer>
+            <h3>Coded by Dan Cross</h3>
+        </footer>
     </div>
 </template>
 
@@ -65,7 +67,8 @@ export default {
             intervalID: "",
             hasGameStarted: false,
             xWrappingOn: false,
-            yWrappingOn: false
+            yWrappingOn: false,
+            helpMessage: "Click a cell to toggle it. Press start button to run game."
         };
     },
     methods: {
@@ -73,17 +76,19 @@ export default {
             if (!this.hasGameStarted) {
                 this.intervalID = setInterval(this.DrawNextGrid, 200);
                 this.hasGameStarted = true;
+                this.helpMessage = "game running";
             }
-            else 
-                console.log("game already in progress");
+            else
+                this.helpMessage = "game already running";
         },
         PauseGame: function() {
             if (this.hasGameStarted) {
                 clearInterval(this.intervalID);
                 this.hasGameStarted = false;
+                this.helpMessage = "game paused";
             }
             else 
-                console.log("game hasn't started yet");
+                this.helpMessage = "start game first";
             
         },
         WipeGrid: function() {
@@ -98,10 +103,10 @@ export default {
                             arrayOfCells[column].FlipIsAlive();
                     }
                 }
-                console.log("Wiping grid");
+                this.helpMessage = "grid wiped";
             }
             else
-                console.log("Must pause game before to wipe grid");
+                this.helpMessage = "must pause game to wipe";
         },
         BuildNextGrid: function() {
             this.nextGrid = [];
