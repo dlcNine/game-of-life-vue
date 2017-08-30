@@ -38,7 +38,7 @@ export default {
                         continue;
                     }
                     else {
-                        
+
                         // check if row is out of bounds of array
                         if (this.yWrappingOn) {
                             if (neighborCoords[0] < 0)
@@ -53,12 +53,18 @@ export default {
 
                         let currentRow = this.GetArrayOfRows()[neighborCoords[0]];
 
-                        let currentCell = currentRow.GetArrayOfCells()[neighborCoords[1]];
-
-                        // TODO: enable wrap around behaior here
-                        if (currentCell === undefined) {
-                            continue;
+                        if (this.xWrappingOn) {
+                            if (neighborCoords[1] < 0)
+                                neighborCoords[1] = currentRow.GetArrayOfCells().length - 1;
+                            else if (neighborCoords[1] > currentRow.GetArrayOfCells().length -1 )
+                                neighborCoords[1] = 0;
                         }
+                        else {
+                            if (neighborCoords[1] < 0 || neighborCoords[1] > currentRow.GetArrayOfCells().length -1)
+                                continue;
+                        }
+
+                        let currentCell = currentRow.GetArrayOfCells()[neighborCoords[1]];
 
                         if (currentCell.isAlive)
                             numAliveNeighbors++;
