@@ -4,6 +4,8 @@
         <grid 
             v-bind:rows="numRows"
             v-bind:columns="numColumns"
+            v-bind:yWrappingOn="yWrappingOn"
+            v-bind:xWrappingOn="xWrappingOn"
         />
         <form>
             <label>
@@ -24,6 +26,7 @@
                     min="1"
                  />
             </label>
+            <br />
             <label for="x-wrap">
                 X-Wrapping {{xWrappingOn}}
                 <input

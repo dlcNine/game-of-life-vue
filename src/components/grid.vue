@@ -14,7 +14,7 @@ import Row from "./row.vue";
 
 export default {
     components: { Row },
-    props: ["rows", "columns"],
+    props: ["rows", "columns", "xWrappingOn", "yWrappingOn"],
     data: function() {
         return {
         };
@@ -39,12 +39,19 @@ export default {
                     }
                     else {
                         
-                        let currentRow = this.GetArrayOfRows()[neighborCoords[0]];
-
-                        // TODO: enable wrap around behavior here
-                        if (currentRow === undefined) {
-                            continue;
+                        // check if row is out of bounds of array
+                        if (this.yWrappingOn) {
+                            if (neighborCoords[0] < 0)
+                                neighborCoords[0] = this.GetArrayOfRows().length - 1;
+                            else if (neighborCoords[0] > this.GetArrayOfRows().length - 1)
+                                neighborCoords[0] = 0;
                         }
+                        else {
+                            if (neighborCoords[0] < 0 || neighborCoords[0] > this.GetArrayOfRows().length - 1)
+                                continue;
+                        }
+
+                        let currentRow = this.GetArrayOfRows()[neighborCoords[0]];
 
                         let currentCell = currentRow.GetArrayOfCells()[neighborCoords[1]];
 
