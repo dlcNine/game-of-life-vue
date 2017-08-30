@@ -45,6 +45,7 @@
             </label>
             <button v-on:click.prevent="StartGame">StartGame</button>
             <button v-on:click.prevent="PauseGame">Pause</button>
+            <button v-on:click.prevent="WipeGrid">Wipe Grid</button>
 
         </form>
     </div>
@@ -83,6 +84,23 @@ export default {
             else 
                 console.log("game hasn't started yet");
             
+        },
+        WipeGrid: function() {
+            if (!this.hasGameStarted) {
+                let arrayOfRows = this.$children[0].GetArrayOfRows();
+
+                for (let row = 0; row < arrayOfRows.length; row++) {
+                    let arrayOfCells = arrayOfRows[row].GetArrayOfCells();
+
+                    for (let column = 0; column < arrayOfCells.length; column++) {
+                        if (arrayOfCells[column].isAlive)
+                            arrayOfCells[column].FlipIsAlive();
+                    }
+                }
+                console.log("Wiping grid");
+            }
+            else
+                console.log("Must pause game before to wipe grid");
         },
         BuildNextGrid: function() {
             this.nextGrid = [];
