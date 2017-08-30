@@ -2,8 +2,8 @@
     <div class="app">
         <h1>Game of Life</h1>
         <grid 
-            v-bind:rows="numRows"
-            v-bind:columns="numColumns"
+            v-bind:rows="numRows | ValidateInput"
+            v-bind:columns="numColumns | ValidateInput"
             v-bind:yWrappingOn="yWrappingOn"
             v-bind:xWrappingOn="xWrappingOn"
         />
@@ -160,7 +160,13 @@ export default {
     },
     filters: {
         ValidateInput: function(value) {
-            console.log(value);
+            if (value < 1)
+                return 1;
+            else if (value > 150)
+                return 150;
+            else {
+                return value;
+            }
         }
     },
     computed: {
