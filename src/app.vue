@@ -48,7 +48,6 @@
             <button v-on:click.prevent="StartGame">StartGame</button>
             <button v-on:click.prevent="PauseGame">Pause</button>
             <button v-on:click.prevent="WipeGrid">Wipe Grid</button>
-
         </form>
     </div>
 </template>
