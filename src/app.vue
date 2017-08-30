@@ -169,7 +169,10 @@ export default {
 </script>
 
 <style>
-
+    div.app {
+        background-color: #290f47;
+        color: white;
+    }
 </style>
 
 

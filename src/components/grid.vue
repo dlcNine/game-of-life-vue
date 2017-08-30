@@ -23,6 +23,40 @@ export default {
         GetArrayOfRows: function() {
             return this.$children;
         },
+        CheckYWrapping: function(rowNumber) {
+            if (this.yWrappingOn) {
+                if (rowNumber < 0)
+                    return this.GetArrayOfRows().length - 1;
+                else if (rowNumber > this.GetArrayOfRows().length - 1)
+                    return 0;
+                else
+                    return rowNumber;
+            }
+            else {
+                if (rowNumber < 0 || rowNumber > this.GetArrayOfRows().length - 1)
+                    return -1;
+                else
+                    return rowNumber;
+            }
+        },
+        CheckXWrapping: function(columnNumber, currentRow) {
+            let arrayOfCells = currentRow.GetArrayOfCells();
+
+            if (this.xWrappingOn) {
+                if (columnNumber < 0)
+                    return arrayOfCells.length - 1;
+                else if (columnNumber > arrayOfCells.length - 1)
+                    return 0;
+                else 
+                    return columnNumber;
+            }
+            else {
+                if (columnNumber < 0 || columnNumber > arrayOfCells.length - 1)
+                    return -1;
+                else 
+                    return columnNumber;
+            }
+        },
         GetNumAliveNeighbors(cellRow, cellColumn){
             let numAliveNeighbors = 0;
 
@@ -39,30 +73,16 @@ export default {
                     }
                     else {
 
-                        // check if row is out of bounds of array
-                        if (this.yWrappingOn) {
-                            if (neighborCoords[0] < 0)
-                                neighborCoords[0] = this.GetArrayOfRows().length - 1;
-                            else if (neighborCoords[0] > this.GetArrayOfRows().length - 1)
-                                neighborCoords[0] = 0;
-                        }
-                        else {
-                            if (neighborCoords[0] < 0 || neighborCoords[0] > this.GetArrayOfRows().length - 1)
-                                continue;
-                        }
+                        neighborCoords[0] = this.CheckYWrapping(neighborCoords[0]);
+
+                        if (neighborCoords[0] === -1)
+                            continue;
 
                         let currentRow = this.GetArrayOfRows()[neighborCoords[0]];
 
-                        if (this.xWrappingOn) {
-                            if (neighborCoords[1] < 0)
-                                neighborCoords[1] = currentRow.GetArrayOfCells().length - 1;
-                            else if (neighborCoords[1] > currentRow.GetArrayOfCells().length -1 )
-                                neighborCoords[1] = 0;
-                        }
-                        else {
-                            if (neighborCoords[1] < 0 || neighborCoords[1] > currentRow.GetArrayOfCells().length -1)
-                                continue;
-                        }
+                        neighborCoords[1] = this.CheckXWrapping(neighborCoords[1], currentRow);
+                        if (neighborCoords[1] === -1)
+                            continue;
 
                         let currentCell = currentRow.GetArrayOfCells()[neighborCoords[1]];
 
