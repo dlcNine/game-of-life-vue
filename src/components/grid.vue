@@ -21,7 +21,6 @@ export default {
     },
     methods: {
         GetArrayOfRows: function() {
-            // console.log(this.$children);
             return this.$children;
         },
         GetNumAliveNeighbors(cellRow, cellColumn){

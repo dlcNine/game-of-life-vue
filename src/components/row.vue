@@ -20,7 +20,6 @@ export default {
     },
     methods: {
         GetArrayOfCells: function() {
-            // console.log(this.$children);
             return this.$children;
         }
     }

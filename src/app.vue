@@ -6,18 +6,40 @@
             v-bind:columns="numColumns"
         />
         <form>
-            <input 
-                type="number" 
-                v-model.number="numRows"
-                placeholder="rows"
-                min="1"
-            />
-            <input 
-                type="number" 
-                v-model.number="numColumns" 
-                placeholder="columns"
-                min="1"
-             />
+            <label>
+                Number of Rows
+                <input 
+                    type="number" 
+                    v-model.number="numRows"
+                    placeholder="rows"
+                    min="1"
+                />
+            </label>
+            <label>
+                Number of Columns
+                <input 
+                    type="number" 
+                    v-model.number="numColumns" 
+                    placeholder="columns"
+                    min="1"
+                 />
+            </label>
+            <label for="x-wrap">
+                X-Wrapping {{xWrappingOn}}
+                <input
+                    id="x-wrap"
+                    type="checkbox" 
+                    v-model="xWrappingOn"
+                />
+            </label>
+            <label for="y-wrap">
+                Y-Wrapping {{yWrappingOn}}
+                <input 
+                    id="y-wrap" 
+                    type="checkbox"  
+                    v-model="yWrappingOn"
+                />
+            </label>
             <button v-on:click.prevent="StartGame">StartGame</button>
             <button v-on:click.prevent="PauseGame">Pause</button>
 
@@ -36,7 +58,9 @@ export default {
             numColumns: 25,
             nextGrid: [],
             intervalID: "",
-            hasGameStarted: false
+            hasGameStarted: false,
+            xWrappingOn: false,
+            yWrappingOn: false
         };
     },
     methods: {
@@ -69,7 +93,6 @@ export default {
                 for (let column = 0; column < arrayOfCells.length; column++) {
                     let currentCell = arrayOfCells[column];
                     let numAliveNeighbors = this.$children[0].GetNumAliveNeighbors(row, column);
-
 
                     let isGoingToLive = this.DetermineLiveOrDie(currentCell, numAliveNeighbors);
 
@@ -108,8 +131,15 @@ export default {
                     return true;
                 else
                     return false;
-
             }
+        },
+        LogIt: function(event) {
+            console.log(event.target.value);
+        }
+    },
+    filters: {
+        ValidateInput: function(value) {
+            console.log(value);
         }
     },
     computed: {
