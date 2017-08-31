@@ -1,6 +1,32 @@
 <template>
     <div class="app section">
-        <h1 class="has-text-centered">Game of Life</h1>
+        <h1 
+            v-on:click="ToggleModal"
+            class="has-text-centered"
+        >
+            Game of Life
+        </h1>
+        <div class="modal hotdog hamburger">
+            <div v-on:click="ToggleModal" class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <p>
+                        The <strong>Game of Life</strong> is a cellular automaton devised by the Britsh mathematician John Horton Conway.
+                    </p>
+                    <br />
+                    <p>
+                        It is a zero-player game where one interacts by creating an initial configuration and observing how it evolves.
+                    </p>
+                    <p class="help">Description from <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">Wikipedia</a></p>
+                </div>
+            </div>
+            <button 
+                class="modal-close is-large" 
+                aria-label="close"
+                v-on:click="ToggleModal"
+            >        
+            </button>
+        </div>
         <form class="columns">
             <div class="field column">
                 <label>Number of Rows</label>
@@ -98,6 +124,14 @@ export default {
         };
     },
     methods: {
+        ToggleModal: function() {
+            let modalNode = document.getElementsByClassName("modal")[0];
+
+            if (modalNode.classList.contains("is-active"))
+                modalNode.classList.remove("is-active");
+            else
+                modalNode.classList.add("is-active");
+        },
         StartGame: function() {
             if (!this.hasGameStarted) {
                 this.intervalID = setInterval(this.DrawNextGrid, 200);
@@ -218,6 +252,12 @@ export default {
     label {
         font-family: "Yantramanav", sans-serif;
         font-size: 20px;
+    }
+    button {
+        font-family: "Yantramanav", sans-serif;
+    }
+    p {
+        font-size: 22px;
     }
     div.app {
         background: linear-gradient(-30deg, #70192b, #3a2b51);
