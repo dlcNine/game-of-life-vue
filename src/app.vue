@@ -23,11 +23,9 @@
                         min="1"
                      />
                 </div>
-            </div>
-            <div class="field column">
-                <div class="control">
+                <div class="control is-inline-block">
                     <label for="x-wrap">
-                        X-Wrapping: 
+                        X-Wrapping 
                         <input
                             class="checkbox"
                             id="x-wrap"
@@ -36,9 +34,9 @@
                         />
                     </label>
                 </div>
-                <div class="control">
+                <div class="control is-inline-block">
                     <label for="y-wrap">
-                        Y-Wrapping:
+                        Y-Wrapping
                         <input
                             class="checkbox" 
                             id="y-wrap" 
@@ -48,21 +46,21 @@
                     </label>
                 </div>
             </div>
-            <div class="column">
+            <div class="field column">
                 <button  
-                    class="button is-primary"
+                    class="button button-full-width is-primary is-block"
                     v-on:click.prevent="StartGame"
                  >
                      Start
                  </button>
                 <button 
-                    class="button is-warning"
+                    class="button button-full-width is-warning is-block"
                     v-on:click.prevent="PauseGame"
                 >
                     Pause
                 </button>
                 <button 
-                    class="button is-danger"
+                    class="button button-full-width is-danger is-block"
                     v-on:click.prevent="WipeGrid"
                 >
                     Wipe
@@ -213,13 +211,21 @@ export default {
         font-family: "Rubik Mono One", sans-serif;
         font-size: 80px;
     }
+    .button-full-width {
+        width: 100%;
+        margin: 6px 0px;
+    }
+    label {
+        font-family: "Yantramanav", sans-serif;
+        font-size: 20px;
+    }
     div.app {
         background: linear-gradient(-30deg, #70192b, #3a2b51);
         
         color: white;
         height: 100%;
         width: 100%;
-        overflow: auto;
+        /*overflow: auto;*/
     }
 </style>
 
