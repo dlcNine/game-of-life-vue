@@ -1,12 +1,12 @@
 <template>
-    <div class="app section">
+    <div class="app-wrap section">
         <h1 
             v-on:click="ToggleModal"
             class="has-text-centered"
         >
             Game of Life
         </h1>
-        <div class="modal hotdog hamburger">
+        <div class="modal">
             <div v-on:click="ToggleModal" class="modal-background"></div>
             <div class="modal-content">
                 <div class="box">
@@ -148,7 +148,7 @@ export default {
                 this.helpMessage = "game paused";
             }
             else 
-                this.helpMessage = "start game first";
+                this.helpMessage = "game already paused";
             
         },
         WipeGrid: function() {
@@ -245,6 +245,9 @@ export default {
         font-family: "Rubik Mono One", sans-serif;
         font-size: 80px;
     }
+    h1:hover {
+        color: #e8af2c;
+    }
     .button-full-width {
         width: 100%;
         margin: 6px 0px;
@@ -259,11 +262,12 @@ export default {
     p {
         font-size: 22px;
     }
-    div.app {
-        background: linear-gradient(-30deg, #70192b, #3a2b51);
+    div.app-wrap {
+        background: linear-gradient(-30deg, #72ecff, #0c1235);
         
         color: white;
-        height: 100%;
+        min-height: 100%;
+        height: auto;
         width: 100%;
         /*overflow: auto;*/
     }

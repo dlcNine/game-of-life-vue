@@ -103,5 +103,6 @@ export default {
 <style>
     div.grid {
         margin: auto;
+        display: inline-block;
     }
 </style>
