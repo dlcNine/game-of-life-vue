@@ -2,43 +2,51 @@
     <div class="app section">
         <h1 class="has-text-centered">Game of Life</h1>
         <form class="columns">
-            <div class="column">
-                <label class="is-block">
-                    Number of Rows
+            <div class="field column">
+                <label>Number of Rows</label>
+                <div class="control">
                     <input 
+                        class="input"
                         type="number" 
                         v-model.number="numRows"
                         placeholder="rows"
                         min="1"
                     />
-                </label>
-                <label class="is-block">
-                    Number of Columns
+                </div>
+                <label>Number of Columns</label>
+                <div class="control">
                     <input 
+                        class="input"
                         type="number" 
                         v-model.number="numColumns"
                         placeholder="columns"
                         min="1"
                      />
-                </label>
+                </div>
             </div>
-            <div class="column">
-                <label for="x-wrap" class="is-block">
-                    X-Wrapping
-                    <input
-                        id="x-wrap"
-                        type="checkbox" 
-                        v-model="xWrappingOn"
-                    />
-                </label>
-                <label for="y-wrap" class="is-block">
-                    Y-Wrapping
-                    <input 
-                        id="y-wrap" 
-                        type="checkbox"  
-                        v-model="yWrappingOn"
-                    />
-                </label>
+            <div class="field column">
+                <div class="control">
+                    <label for="x-wrap">
+                        X-Wrapping: 
+                        <input
+                            class="checkbox"
+                            id="x-wrap"
+                            type="checkbox" 
+                            v-model="xWrappingOn"
+                        />
+                    </label>
+                </div>
+                <div class="control">
+                    <label for="y-wrap">
+                        Y-Wrapping:
+                        <input
+                            class="checkbox" 
+                            id="y-wrap" 
+                            type="checkbox"  
+                            v-model="yWrappingOn"
+                        />
+                    </label>
+                </div>
             </div>
             <div class="column">
                 <button  
