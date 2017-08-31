@@ -1,47 +1,67 @@
 <template>
-    <div class="app">
-        <h1>Game of Life</h1>
-        <form>
-            <label>
-                Number of Rows
-                <input 
-                    type="number" 
-                    v-model.number="numRows"
-                    placeholder="rows"
-                    min="1"
-                />
-            </label>
-            <label>
-                Number of Columns
-                <input 
-                    type="number" 
-                    v-model.number="numColumns"
-                    placeholder="columns"
-                    min="1"
-                 />
-            </label>
-            <br />
-            <label for="x-wrap">
-                X-Wrapping
-                <input
-                    id="x-wrap"
-                    type="checkbox" 
-                    v-model="xWrappingOn"
-                />
-            </label>
-            <label for="y-wrap">
-                Y-Wrapping
-                <input 
-                    id="y-wrap" 
-                    type="checkbox"  
-                    v-model="yWrappingOn"
-                />
-            </label>
-            <button v-on:click.prevent="StartGame">StartGame</button>
-            <button v-on:click.prevent="PauseGame">Pause</button>
-            <button v-on:click.prevent="WipeGrid">Wipe Grid</button>
+    <div class="app section">
+        <h1 class="has-text-centered">Game of Life</h1>
+        <form class="columns">
+            <div class="column">
+                <label class="is-block">
+                    Number of Rows
+                    <input 
+                        type="number" 
+                        v-model.number="numRows"
+                        placeholder="rows"
+                        min="1"
+                    />
+                </label>
+                <label class="is-block">
+                    Number of Columns
+                    <input 
+                        type="number" 
+                        v-model.number="numColumns"
+                        placeholder="columns"
+                        min="1"
+                     />
+                </label>
+            </div>
+            <div class="column">
+                <label for="x-wrap" class="is-block">
+                    X-Wrapping
+                    <input
+                        id="x-wrap"
+                        type="checkbox" 
+                        v-model="xWrappingOn"
+                    />
+                </label>
+                <label for="y-wrap" class="is-block">
+                    Y-Wrapping
+                    <input 
+                        id="y-wrap" 
+                        type="checkbox"  
+                        v-model="yWrappingOn"
+                    />
+                </label>
+            </div>
+            <div class="column">
+                <button  
+                    class="button is-primary"
+                    v-on:click.prevent="StartGame"
+                 >
+                     Start
+                 </button>
+                <button 
+                    class="button is-warning"
+                    v-on:click.prevent="PauseGame"
+                >
+                    Pause
+                </button>
+                <button 
+                    class="button is-danger"
+                    v-on:click.prevent="WipeGrid"
+                >
+                    Wipe
+                </button>
+            </div>
         </form>
-        <h2>{{helpMessage}}</h2>
+        <h2 class="is-capitalized">{{helpMessage}}</h2>
         <grid 
             v-bind:rows="numRows | ValidateInput"
             v-bind:columns="numColumns | ValidateInput"
@@ -181,9 +201,17 @@ export default {
 </script>
 
 <style>
+    h1 {
+        font-family: "Rubik Mono One", sans-serif;
+        font-size: 80px;
+    }
     div.app {
-        background-color: #290f47;
+        background: linear-gradient(-30deg, #70192b, #3a2b51);
+        
         color: white;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
     }
 </style>
 
