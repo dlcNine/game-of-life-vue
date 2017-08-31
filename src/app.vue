@@ -11,7 +11,7 @@
             <div class="modal-content">
                 <div class="box">
                     <p>
-                        The <strong>Game of Life</strong> is a cellular automaton devised by the Britsh mathematician John Horton Conway.
+                        The <strong>Game of Life</strong> is a cellular automaton devised by the British mathematician John Horton Conway.
                     </p>
                     <br />
                     <p>
@@ -101,7 +101,7 @@
             v-bind:xWrappingOn="xWrappingOn"
         />
         <footer>
-            <h3>Coded by Dan Cross</h3>
+            <h3>Coded by <a href="https://danielcross.herokuapp.com">Dan Cross</a></h3>
         </footer>
     </div>
 </template>
@@ -219,9 +219,6 @@ export default {
                 else
                     return false;
             }
-        },
-        LogIt: function(event) {
-            console.log(event.target.value);
         }
     },
     filters: {
@@ -237,14 +234,11 @@ export default {
         numColumns: function() {
             if (this.numColumns < 1)
                 this.numColumns = 1;
-            else if (this.numRows > 150)
-                this.numColumns = 150;
             else {
                 let appWidth = document.getElementsByClassName("app-wrap")[0].clientWidth - 48;
                 let cellNode = document.getElementsByClassName("cell")[0];
 
                 if (this.numColumns > Math.floor(appWidth / (cellNode.clientWidth + 2))) {
-                    console.log("too many columns");
                     this.numColumns = Math.floor(appWidth / (cellNode.clientWidth + 2));
                 }
             }
@@ -285,7 +279,6 @@ export default {
         min-height: 100%;
         height: auto;
         width: 100%;
-        /*overflow: auto;*/
     }
 </style>
 
