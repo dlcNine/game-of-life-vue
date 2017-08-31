@@ -274,6 +274,7 @@ export default {
     }
     div.app-wrap {
         background: linear-gradient(-30deg, #72ecff, #0c1235);
+        background-color: #0c1235;
         
         color: white;
         min-height: 100%;
