@@ -43,7 +43,7 @@
                 <div class="control">
                     <input 
                         class="input"
-                        type="number" 
+                        type="number"
                         v-model.number="numColumns"
                         placeholder="columns"
                         min="1"
@@ -95,8 +95,8 @@
         </form>
         <h2 class="is-capitalized">{{helpMessage}}</h2>
         <grid 
-            v-bind:rows="numRows | ValidateInput"
-            v-bind:columns="numColumns | ValidateInput"
+            v-bind:rows="numRows"
+            v-bind:columns="numColumns"
             v-bind:yWrappingOn="yWrappingOn"
             v-bind:xWrappingOn="xWrappingOn"
         />
@@ -225,14 +225,30 @@ export default {
         }
     },
     filters: {
-        ValidateInput: function(value) {
-            if (value < 1)
-                return 1;
-            else if (value > 150)
-                return 150;
+
+    },
+    watch: {
+        numRows: function() {
+            if (this.numRows < 1)
+                this.numRows = 1;
+            else if (this.numRows > 150)
+                this.numRows = 150;
+        },
+        numColumns: function() {
+            if (this.numColumns < 1)
+                this.numColumns = 1;
+            else if (this.numRows > 150)
+                this.numColumns = 150;
             else {
-                return value;
+                let appWidth = document.getElementsByClassName("app-wrap")[0].clientWidth - 48;
+                let cellNode = document.getElementsByClassName("cell")[0];
+
+                if (this.numColumns > Math.floor(appWidth / (cellNode.clientWidth + 2))) {
+                    console.log("too many columns");
+                    this.numColumns = Math.floor(appWidth / (cellNode.clientWidth + 2));
+                }
             }
+
         }
     },
     computed: {
@@ -246,7 +262,7 @@ export default {
         font-size: 80px;
     }
     h1:hover {
-        color: #e8af2c;
+        color: #f7b32b;
     }
     .button-full-width {
         width: 100%;
