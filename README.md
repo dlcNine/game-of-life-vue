@@ -1,18 +1,13 @@
-# first-vue-test
+# Game of Life - Vue
 
-> A Vue.js project
+A game of life simulation built with Vue.js in order to teach myself the core Vue.js framework.
 
-## Build Setup
+[Click here to play!](https://boiling-headland-38010.herokuapp.com/) 
 
-``` bash
-# install dependencies
-npm install
+## Tech Used
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- Vue.js
+  - vue-cli
+- Node.js
+- Express.js
+- Bulma
